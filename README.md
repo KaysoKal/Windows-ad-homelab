@@ -44,22 +44,24 @@ Relevant for: **IT Support / Help Desk, Desktop Support, Systems Administrator (
 
 ```mermaid
 flowchart LR
-    subgraph Host["Hyper-V host"]
-        H["vEthernet (LabNet)"]
+    subgraph Laptop["My laptop: AetherNode9 (physical PC running Hyper-V)"]
+        direction LR
+        subgraph LN["LabNet: internal virtual switch, 192.168.10.0/24, no internet"]
+            SW(["LabNet switch"])
+        end
+        HOST["Laptop's own lab adapter<br/>vEthernet (LabNet)<br/>DHCP address"]
+        DC["DC01 (VM)<br/>Domain controller<br/>AD DS · DNS · DHCP"]
+        WS1["WS01 (VM)<br/>Windows 11<br/>Office-Workstations"]
+        WS2["WS02 (VM)<br/>Windows 11<br/>Warehouse-Workstations"]
+        DS(["Default Switch<br/>NAT through the laptop"])
+        HOST --- SW
+        DC ---|"NIC 1: 192.168.10.10 (static)"| SW
+        WS1 ---|"192.168.10.150 (reserved)"| SW
+        WS2 ---|"DHCP"| SW
+        DC -.-|"NIC 2: updates only, not in DNS"| DS
     end
-
-    subgraph LabNet["LabNet — internal switch, 192.168.10.0/24"]
-        DC["DC01<br/>Domain controller<br/>AD DS · DNS · DHCP<br/>192.168.10.10"]
-        WS1["WS01<br/>Windows 11<br/>Office-Workstations<br/>192.168.10.150 (reserved)"]
-        WS2["WS02<br/>Windows 11<br/>Warehouse-Workstations<br/>DHCP"]
-    end
-
-    Internet(("Internet"))
-
-    H --- DC
-    DC --- WS1
-    DC --- WS2
-    DC -. "2nd NIC on Default Switch (NAT)<br/>updates only, not in DNS" .- Internet
+    DS -.- WIFI["Laptop Wi-Fi<br/>home router"]
+    WIFI -.- NET(("Internet"))
 ```
 
 | Item | Value |
