@@ -10,8 +10,8 @@ Notes I kept while building the lab, in the order I did the work. Written in pla
 - Created the VMs through Hyper-V Manager.
 - Created **LabNet**, an internal virtual switch so the VMs can talk to each other (and to my laptop) but not the internet.
 - The **Default Switch** already exists in Hyper-V. It reaches the internet through NAT, so I gave DC01 a second adapter on it for Windows updates:
-  ```powershell
-  Add-VMNetworkAdapter -VMName DC01 -SwitchName "Default Switch" -Name "Internet"
+```powershell
+Add-VMNetworkAdapter -VMName DC01 -SwitchName "Default Switch" -Name "Internet"
   ```
 - **Tip:** removing a VM does **not** delete its virtual hard disk. The .vhdx file stays on the drive until you delete it yourself.
 
@@ -479,18 +479,3 @@ Checkpoint-VM -Name DC01 -SnapshotName "Promoted-Clean"    # run on the Hyper-V 
 ```
 A checkpoint is like saving in a video game: a quick undo before a patch or risky change. For a real domain controller, restore from **backup** instead of rolling back a snapshot, because rolling back can break replication. Snapshot = short-term undo; backup = real recovery.
 
----
-
-## Questions I practice answering
-
-**Why does a DC point DNS at itself, and why add forwarders?**
-The DC *is* the DNS server for the domain, so it answers lab names itself. Forwarders send anything it doesn't know (like google.com) to an outside DNS server.
-
-**What does Sysprep's /generalize remove, and why can't the reference machine be domain-joined?**
-It removes the computer's unique identity: the SID and the computer name. A domain-joined reference machine would carry its domain membership into every copy, so every deployed machine would clash with it.
-
-**How does the user script work?**
-It reads new hires from a CSV, builds each username from first and last name, skips anyone who already exists so it's safe to re-run, and uses the department column to place each user in the right OU and security group. I preview it with `-WhatIf` first.
-
-**Why use a CSV?**
-In a real company, HR sends a list of new hires. Instead of clicking through ADUC for each person, the script handles 10 or 100 the same way, with no typos and consistent naming.
