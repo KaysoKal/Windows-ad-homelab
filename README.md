@@ -100,7 +100,7 @@ New workstations boot straight to setup in about **3 minutes instead of a 20-min
 > **Lesson learned:** Windows 11 turned on device encryption automatically on the reference machine, which blocks Sysprep. I had to fully decrypt the drive before generalizing.
 
 ### 3. OU structure and redirection
-Designed OUs by function so Group Policy can be targeted precisely ([`Create-OUs.ps1`](scripts/Create-OUs.ps1)):
+Designed OUs by function so Group Policy can be targeted precisely ([`Create-OUs.ps1`](Scripts/Create-OUs.ps1)):
 
 ```
 lab.local
