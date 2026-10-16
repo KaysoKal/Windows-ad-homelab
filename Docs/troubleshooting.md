@@ -54,7 +54,7 @@ Each issue is written the way I'd write a help desk ticket: symptom, what I chec
 
 ---
 
-## 4. `Enable-BitLocker` failed twice
+## 4. Enable-BitLocker failed twice
 
 **Error 1:** *"Group Policy settings require the creation of a recovery key"* (0x8031005F).
 - The escrow GPO was set to **Require** a 256-bit recovery key *file* in addition to the 48-digit recovery password.
