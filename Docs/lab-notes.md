@@ -336,13 +336,25 @@ New-ADUser -Name "Maria Santos"
 ```
 The dash marks a parameter, **not** a variable.
 
-### DNS records
-- **A** = name → IP (`dc01` → 192.168.10.10). Created automatically when DC01 was promoted.
-- **CNAME** = nickname → real name (`dc` → `dc01.lab.local`). Never automatic.
-- **SRV** = service → server + port (`_ldap._tcp` → dc01:389). How computers find the DC.
-- View: `Get-DnsServerResourceRecord -ZoneName "lab.local"` (add `-RRType A` to filter)
-- Help desk clue: can't find the domain or random sign-in failures → check DNS first.
+### DNS records (the phone book)
+DNS is the phone book. Each record is a different kind of entry.
 
+- **A record** = a name and its phone number.
+  "dc01" → 192.168.10.10
+  Windows made these for me when DC01 became the domain controller.
+
+- **CNAME** = a nickname that points to a real name.
+  "dc" → "dc01" → 192.168.10.10
+  Like saving someone as "Mom" when their real name is in the book.
+  Windows never makes these. You add them yourself.
+
+- **SRV record** = "who do I call for this job?"
+  "Who handles logins?" → dc01
+  This is how a new computer finds the domain controller when it joins.
+
+See the whole phone book:  Get-DnsServerResourceRecord -ZoneName "lab.local"
+
+Help desk tip: if a computer can't find the domain, check the phone book (DNS) first.
   
 ### The building blocks
 
