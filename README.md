@@ -159,7 +159,7 @@ Created and linked GPOs with PowerShell ([`Create-GPOs.ps1`](scripts/Create-GPOs
 ### 7. Department file share
 Created `\\DC01\WarehouseShare` for the warehouse team, with both **share** and **NTFS** permissions granted to `SEC-Warehouse-Staff`, mapped automatically as `H:` by Group Policy. Getting this working took three separate fixes, documented in [HELP-2](tickets/02-warehouse-share-access.md).
 
-See the runbook: [`docs/runbook-department-share.md`](docs/runbook-department-share.md)
+See the runbook: [`docs/runbook-department-share.md`](Docs/runbook-department-share.md)
 
 ### 8. Remote Desktop, scoped by policy
 One GPO with three independent settings (service on, firewall exception limited to `192.168.10.0/24`, Remote Desktop Users group membership). Tested in **both directions**:
@@ -196,7 +196,7 @@ Logged the work in a Jira Service Management project, *IT Help Desk*, with inter
 
 ## Troubleshooting highlights
 
-Real problems I hit and solved. Full write-ups in [`docs/troubleshooting.md`](docs/troubleshooting.md), and the ticket versions in [`tickets/`](tickets/).
+Real problems I hit and solved. Full write-ups in [`docs/troubleshooting.md`](Docs/troubleshooting.md), and the ticket versions in [`tickets/`](tickets/).
 
 | Symptom | Root cause |
 |---|---|
