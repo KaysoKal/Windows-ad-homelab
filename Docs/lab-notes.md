@@ -493,6 +493,31 @@ New-ADComputer -Name "WS02" -Path "OU=Office-Workstations,OU=LAB-Computers,DC=la
 ```
 Or redirect every new computer with `redircmp`, as in Part 3.
 
+### Win+R shortcuts (the "Run" box)
+Press **Win+R**, type the name, press Enter. It opens the tool directly instead of clicking through menus.
+
+**Active Directory and the domain controller**
+- `dsa.msc` → Active Directory Users and Computers (ADUC). Users, groups, computers, OUs.
+- `gpmc.msc` → Group Policy Management. Create and link GPOs.
+- `dnsmgmt.msc` → DNS Manager. The phone book. Where I deleted the ghost record.
+- `dhcpmgmt.msc` → DHCP. Scopes, leases, reservations.
+
+**Checking a computer**
+- `rsop.msc` → which policies actually applied (the GUI version of gpresult).
+- `eventvwr.msc` → Event Viewer. Windows' diary of what went wrong.
+- `services.msc` → see if a service is running, start or stop it.
+- `ncpa.cpl` → network adapters. Check or change an IP by hand.
+- `sysdm.cpl` → System Properties. Rename a computer or join the domain.
+
+**Remote and sharing**
+- `mstsc` → Remote Desktop. Add `/v:192.168.10.150` to connect straight to WS01.
+- `\\DC01\WarehouseShare` → open a shared folder directly.
+
+**Other ones I used**
+- `virtmgmt.msc` → Hyper-V Manager (on my laptop).
+- `C:\Windows\System32\Sysprep\sysprep.exe` → Sysprep.
+- `control /name Microsoft.BitLockerDriveEncryption` → BitLocker settings.
+
 ### Checkpoints
 ```powershell
 Checkpoint-VM -Name DC01 -SnapshotName "Promoted-Clean"    # run on the Hyper-V host
