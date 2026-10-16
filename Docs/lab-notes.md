@@ -336,6 +336,13 @@ New-ADUser -Name "Maria Santos"
 ```
 The dash marks a parameter, **not** a variable.
 
+### DNS records
+- **A** = name → IP (`dc01` → 192.168.10.10). Created automatically when DC01 was promoted.
+- **CNAME** = nickname → real name (`dc` → `dc01.lab.local`). Never automatic.
+- **SRV** = service → server + port (`_ldap._tcp` → dc01:389). How computers find the DC.
+- View: `Get-DnsServerResourceRecord -ZoneName "lab.local"` (add `-RRType A` to filter)
+- Help desk clue: can't find the domain or random sign-in failures → check DNS first.
+- 
 ### The building blocks
 
 | Symbol | What it does |
