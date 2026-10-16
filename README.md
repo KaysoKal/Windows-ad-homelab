@@ -13,11 +13,11 @@ I scripted the identity side in PowerShell: the OU structure, and a provisioning
 | Folder / file | What's in it |
 |---|---|
 | [`tickets/`](tickets/) | Service desk tickets: requests and incidents with internal notes and customer replies |
-| [`scripts/`](scripts/) | PowerShell scripts for OUs, user provisioning, offboarding, and GPOs |
-| [`docs/troubleshooting.md`](docs/troubleshooting.md) | Problems I hit and how I solved them |
-| [`docs/runbook-department-share.md`](docs/runbook-department-share.md) | Step-by-step runbook for creating a department file share |
-| [`docs/lab-notes.md`](docs/lab-notes.md) | My build notes, in plain language |
-| [`docs/screenshots.md`](docs/screenshots.md) | Every screenshot, in build order |
+| [`scripts/`](Scripts/) | PowerShell scripts for OUs, user provisioning, offboarding, and GPOs |
+| [`Docs/troubleshooting.md`](docs/troubleshooting.md) | Problems I hit and how I solved them |
+| [`Docs/runbook-department-share.md`](docs/runbook-department-share.md) | Step-by-step runbook for creating a department file share |
+| [`Docs/lab-notes.md`](docs/lab-notes.md) | My build notes, in plain language |
+| [`Docs/screenshots.md`](docs/screenshots.md) | Every screenshot, in build order |
 
 ## How this maps to IT roles
 
