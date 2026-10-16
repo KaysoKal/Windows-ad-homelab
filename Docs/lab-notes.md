@@ -342,7 +342,8 @@ The dash marks a parameter, **not** a variable.
 - **SRV** = service → server + port (`_ldap._tcp` → dc01:389). How computers find the DC.
 - View: `Get-DnsServerResourceRecord -ZoneName "lab.local"` (add `-RRType A` to filter)
 - Help desk clue: can't find the domain or random sign-in failures → check DNS first.
-- 
+
+  
 ### The building blocks
 
 | Symbol | What it does |
